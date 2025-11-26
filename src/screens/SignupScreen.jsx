@@ -2,7 +2,6 @@ import React, { useState, useRef } from "react";
 import {
   View,
   Text,
-  TextInput,
   StyleSheet,
   TouchableOpacity,
   Alert,
@@ -10,6 +9,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   Animated,
+  TextInput,
 } from "react-native";
 import { useAuth } from "../auth/AuthProvider";
 
@@ -20,9 +20,9 @@ export default function SignupScreen({ navigation }) {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const nameLabel = useRef(new Animated.Value(name ? 1 : 0)).current;
-  const emailLabel = useRef(new Animated.Value(email ? 1 : 0)).current;
-  const passwordLabel = useRef(new Animated.Value(password ? 1 : 0)).current;
+  const nameLabel = useRef(new Animated.Value(0)).current;
+  const emailLabel = useRef(new Animated.Value(0)).current;
+  const passwordLabel = useRef(new Animated.Value(0)).current;
 
   const animateLabelUp = (label) =>
     Animated.timing(label, {
@@ -30,44 +30,50 @@ export default function SignupScreen({ navigation }) {
       duration: 150,
       useNativeDriver: false,
     }).start();
+
   const animateLabelDown = (label, value) => {
-    if (!value)
+    if (!value) {
       Animated.timing(label, {
         toValue: 0,
         duration: 150,
         useNativeDriver: false,
       }).start();
+    }
   };
 
-    const handleSignup = async () => {
-      if (!name || !email || !password)
-        return Alert.alert("Validation", "Please fill all fields");
-      try {
-        setLoading(true);
-        await signup({ name, email, password });
-        // ✅ Navigate to Bottom Tabs after signup
-        navigation.replace("MainApp", { screen: "Home" });
-      } catch (e) {
-        Alert.alert("Signup failed", e.message || "Unknown error");
-      } finally {
-        setLoading(false);
-      }
-    };
+  const handleSignup = async () => {
+    if (!name || !email || !password)
+      return Alert.alert("Validation", "Please fill all fields");
 
+    try {
+      setLoading(true);
+      // updated for fake Laravel API
+      await signup(name, email, password);
+
+      navigation.replace("MainApp", { screen: "Home" });
+    } catch (e) {
+      Alert.alert("Signup failed", e.message || "Unknown error");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const FloatingLabel = ({ label, animatedValue }) => {
     const top = animatedValue.interpolate({
       inputRange: [0, 1],
       outputRange: [18, -8],
     });
+
     const fontSize = animatedValue.interpolate({
       inputRange: [0, 1],
       outputRange: [16, 12],
     });
+
     const color = animatedValue.interpolate({
       inputRange: [0, 1],
       outputRange: ["#888", "#000"],
     });
+
     return (
       <Animated.Text style={[styles.floatingLabel, { top, fontSize, color }]}>
         {label}
@@ -163,14 +169,13 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: "transparent",
     color: "#000",
-    paddingVertical: 18, // more space for label
+    paddingVertical: 18,
     paddingHorizontal: 15,
     borderRadius: 12,
     fontSize: 16,
-    borderWidth: 1.5, // thicker border
+    borderWidth: 1.5,
     borderColor: "#000",
   },
-
   button: {
     backgroundColor: "#000",
     padding: 15,

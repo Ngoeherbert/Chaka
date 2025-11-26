@@ -11,6 +11,7 @@ import {
   Animated,
   TextInput,
 } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useAuth } from "../auth/AuthProvider";
 
 export default function LoginScreen({ navigation }) {
@@ -23,6 +24,17 @@ export default function LoginScreen({ navigation }) {
 
   const emailLabel = useRef(new Animated.Value(0)).current;
   const passwordLabel = useRef(new Animated.Value(0)).current;
+
+  // Auto-login if credentials exist
+  useEffect(() => {
+    const checkCachedLogin = async () => {
+      const cached = await AsyncStorage.getItem("user");
+      if (cached) {
+        navigation.replace("MainApp");
+      }
+    };
+    checkCachedLogin();
+  }, []);
 
   useEffect(() => {
     Animated.timing(fadeAnim, {
@@ -50,16 +62,44 @@ export default function LoginScreen({ navigation }) {
     }
   };
 
+  // ------------------------------
+  // LOGIN HANDLER
+  // ------------------------------
   const handleLogin = async () => {
     if (!email || !password)
       return Alert.alert("Validation", "Please fill all fields");
 
+    setLoading(true);
+
     try {
-      setLoading(true);
-      await login(email, password);
-      navigation.replace("MainApp", { screen: "Home" });
-    } catch (e) {
-      Alert.alert("Login failed", e.message || "Unknown error");
+      // FAKE Laravel API (since you don’t have a backend yet)
+      const response = {
+        status: 200,
+        data: {
+          user: {
+            id: 1,
+            name: "Demo User",
+            email: email,
+          },
+          token: "FAKE_LARAVEL_TEST_TOKEN",
+        },
+      };
+
+      if (response.status === 200) {
+        const { user, token } = response.data;
+
+        // Save user offline
+        await AsyncStorage.setItem("user", JSON.stringify({ user, token }));
+
+        // Update global auth state
+        login(user, token);
+
+        navigation.replace("MainApp");
+      } else {
+        Alert.alert("Login Failed", "Invalid email or password");
+      }
+    } catch (error) {
+      Alert.alert("Error", "Unable to login. Please try again.");
     } finally {
       setLoading(false);
     }

@@ -15,8 +15,8 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { loadItems } from "../storage/db";
-import { products as defaultProducts } from "../data/products";
+// import { loadItems } from "../storage/db";
+// import { products as defaultProducts } from "../data/products";
 import { fetchProducts } from "../api/fetchProducts";
 
 const { width } = Dimensions.get("window");

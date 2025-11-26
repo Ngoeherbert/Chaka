@@ -66,7 +66,7 @@ export const products = [
     colors: ["Blue", "Red", "White"],
     sizes: [7, 8, 9, 10, 11, 12],
 
-    thumbnail: require("../../assets/images/puma1.png"),
+    thumbnail: require("../../assets/images/bounce1.png"),
 
     images: [
       {
@@ -93,19 +93,19 @@ export const products = [
     colors: ["Blue", "Red", "White"],
     sizes: [7, 8, 9, 10, 11, 12],
 
-    thumbnail: require("../../assets/images/puma1.png"),
+    thumbnail: require("../../assets/images/force1.png"),
 
     images: [
       {
-        src: require("../../assets/images/puma1.png"),
+        src: require("../../assets/images/nike2.png"),
         bgColor: "#e3f2ff",
       },
       {
-        src: require("../../assets/images/puma2.png"),
+        src: require("../../assets/images/nb2.png"),
         bgColor: "#ffecec",
       },
       {
-        src: require("../../assets/images/puma3.png"),
+        src: require("../../assets/images/nb1.png"),
         bgColor: "#fff8e3",
       },
     ],
@@ -120,19 +120,19 @@ export const products = [
     colors: ["Blue", "Red", "White"],
     sizes: [7, 8, 9, 10, 11, 12],
 
-    thumbnail: require("../../assets/images/puma1.png"),
+    thumbnail: require("../../assets/images/max4.png"),
 
     images: [
       {
-        src: require("../../assets/images/puma1.png"),
+        src: require("../../assets/images/jordan18.png"),
         bgColor: "#e3f2ff",
       },
       {
-        src: require("../../assets/images/puma2.png"),
+        src: require("../../assets/images/force10.png"),
         bgColor: "#ffecec",
       },
       {
-        src: require("../../assets/images/puma3.png"),
+        src: require("../../assets/images/nike3.png"),
         bgColor: "#fff8e3",
       },
     ],
@@ -147,19 +147,19 @@ export const products = [
     colors: ["Blue", "Red", "White"],
     sizes: [7, 8, 9, 10, 11, 12],
 
-    thumbnail: require("../../assets/images/puma1.png"),
+    thumbnail: require("../../assets/images/dunk3.png"),
 
     images: [
       {
-        src: require("../../assets/images/puma1.png"),
+        src: require("../../assets/images/dunk7.png"),
         bgColor: "#e3f2ff",
       },
       {
-        src: require("../../assets/images/puma2.png"),
+        src: require("../../assets/images/dunk6.png"),
         bgColor: "#ffecec",
       },
       {
-        src: require("../../assets/images/puma3.png"),
+        src: require("../../assets/images/force2.png"),
         bgColor: "#fff8e3",
       },
     ],
@@ -174,19 +174,19 @@ export const products = [
     colors: ["Blue", "Red", "White"],
     sizes: [7, 8, 9, 10, 11, 12],
 
-    thumbnail: require("../../assets/images/puma1.png"),
+    thumbnail: require("../../assets/images/jordan15.png"),
 
     images: [
       {
-        src: require("../../assets/images/puma1.png"),
+        src: require("../../assets/images/jordan15.png"),
         bgColor: "#e3f2ff",
       },
       {
-        src: require("../../assets/images/puma2.png"),
+        src: require("../../assets/images/jordan13.png"),
         bgColor: "#ffecec",
       },
       {
-        src: require("../../assets/images/puma3.png"),
+        src: require("../../assets/images/jordan12.png"),
         bgColor: "#fff8e3",
       },
     ],
@@ -201,19 +201,19 @@ export const products = [
     colors: ["Blue", "Red", "White"],
     sizes: [7, 8, 9, 10, 11, 12],
 
-    thumbnail: require("../../assets/images/puma1.png"),
+    thumbnail: require("../../assets/images/sport1.png"),
 
     images: [
       {
-        src: require("../../assets/images/puma1.png"),
+        src: require("../../assets/images/jordan17.png"),
         bgColor: "#e3f2ff",
       },
       {
-        src: require("../../assets/images/puma2.png"),
+        src: require("../../assets/images/jordan3.png"),
         bgColor: "#ffecec",
       },
       {
-        src: require("../../assets/images/puma3.png"),
+        src: require("../../assets/images/jordan14.png"),
         bgColor: "#fff8e3",
       },
     ],
